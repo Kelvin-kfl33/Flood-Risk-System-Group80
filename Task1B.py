@@ -16,5 +16,5 @@ def run():
     return A,B
 
 if __name__ == "__main__":
-    print(" Task1B")
+    print("Task1B")
     run()
