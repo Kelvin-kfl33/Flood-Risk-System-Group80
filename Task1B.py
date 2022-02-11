@@ -6,6 +6,8 @@ def run():
     stations = build_station_list()
     p = (52.2053, 0.1218)
     x = stations_by_distance(stations, p)
+    A = x[:10]
+    B = x[-10:]
     print("The 10 closest stations from Cambridge are {}".format(x[:10]))
     print("The 10 furthest stations from Cambridge are {}".format(x[-10:]))
     """Test the length of the lists"""
