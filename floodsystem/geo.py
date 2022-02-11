@@ -39,7 +39,7 @@ def stations_within_radius(stations, centre, r):
         elif distance > r:
             pass
     station_list = sorted(station_list)
-    assert station_list < 3000
+    assert len(station_list) < 3000
     return station_list
 
 def rivers_with_station(stations):
