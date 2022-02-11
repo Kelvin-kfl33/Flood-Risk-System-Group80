@@ -38,7 +38,9 @@ class MonitoringStation:
         d += "   river:         {}\n".format(self.river)
         d += "   typical range: {}".format(self.typical_range)
         return d
+
     def typical_range_consistent(self):
+        """Return a True or False, depending on whether the typical range is consistent or not"""
         typical_range = self.typical_range
         if typical_range == None:
             return False
@@ -48,6 +50,7 @@ class MonitoringStation:
             return True
 
 def inconsistent_typical_range_stations(stations):
+    """Give a list of inconsistent stations"""
     inconsistent_stations = []
     for station in stations:
         if MonitoringStation.typical_range_consistent(station) == False:
@@ -55,4 +58,6 @@ def inconsistent_typical_range_stations(stations):
         else:
             continue
     inconsistent_stations = sorted(inconsistent_stations)
+    assert inconsistent_stations != None 
+    assert inconsistent_stations != []
     return inconsistent_stations
