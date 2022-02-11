@@ -26,6 +26,7 @@ def stations_by_distance(stations, p):
             pass
     tuples = list(zip(stations_name, stations_towns, stations_distance))
     tuples = sorted_by_key(tuples, 2)
+    assert len(stations_name) <5000
     return tuples
 
 def stations_within_radius(stations, centre, r):
@@ -38,6 +39,7 @@ def stations_within_radius(stations, centre, r):
         elif distance > r:
             pass
     station_list = sorted(station_list)
+    assert station_list < 3000
     return station_list
 
 def rivers_with_station(stations):
@@ -92,6 +94,7 @@ def stations_by_river(stations):
     dicti = {}
     for key in sorted(dictionary):
         dicti.update({key : dictionary[key]})
+    assert dicti != {}
     return dicti
 
 def rivers_by_station_number(stations, N):
@@ -123,5 +126,5 @@ def rivers_by_station_number(stations, N):
             count += 1
         if i[1] < Low_bound_station:
             break
-
+    assert tuples != None
     return tuples[:count]
