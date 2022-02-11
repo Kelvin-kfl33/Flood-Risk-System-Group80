@@ -12,6 +12,7 @@ from .utils import sorted_by_key  # noqa
 
 
 def stations_by_distance(stations, p):
+    """Give a list with the readings of stations names, stations towns, stations distance from a given coordinate"""
     stations_name = []
     stations_towns = []
     stations_distance = []
@@ -28,6 +29,7 @@ def stations_by_distance(stations, p):
     return tuples
 
 def stations_within_radius(stations, centre, r):
+    """Give stations within a given radius with respect to the city centre"""
     station_list = []
     for i in stations:
         distance = haversine(centre, i.coord)
@@ -37,7 +39,9 @@ def stations_within_radius(stations, centre, r):
             pass
     station_list = sorted(station_list)
     return station_list
+
 def rivers_with_station(stations):
+    """Give rivers and their corresponding stations number"""
     rivers_name = []
     stations_number = []
     for station in stations:
@@ -67,6 +71,7 @@ def rivers_with_station(stations):
     return river_list[:10]
 
 def stations_by_river(stations):
+    """Give a dictionary to hold the rivers name as keys and their corresponding stations' name as values"""
     rivers_name = []
     for i in stations:
         if i.river not in rivers_name:
@@ -90,6 +95,7 @@ def stations_by_river(stations):
     return dicti
 
 def rivers_by_station_number(stations, N):
+    """Give ranked rivers name, according to their number of stations"""
     rivers_name = []
     stations_number = []
     for station in stations:
