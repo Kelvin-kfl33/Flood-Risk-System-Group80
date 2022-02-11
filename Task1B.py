@@ -1,6 +1,6 @@
 from floodsystem.geo import stations_by_distance
 from floodsystem.stationdata import build_station_list
-
+import haversine
 def run():
     """Function to produce two lists, one for the 10 closest stations, the other one for the 10 furthest stations"""
     stations = build_station_list()
