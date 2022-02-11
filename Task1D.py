@@ -11,9 +11,13 @@ def run():
     ans2 = z['River Cam']
     ans3 = z['River Thames']
 
+    print("\nfirst 10 rivers with station in alphabetical order")
     print(y)
+    print("\nstations in River Aire")
     print(ans1)
+    print("\nstations in River Cam")
     print(ans2)
+    print("\nstations in River Thames")
     print(ans3)
     return y, ans1, ans2 ,ans3
 
