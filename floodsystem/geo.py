@@ -88,22 +88,6 @@ def stations_by_river(stations):
     for key in sorted(dictionary):
         dicti.update({key : dictionary[key]})
     return dicti
-#def rivers_with_station(stations):
-    #river_station = []
-    #for station in stations:
-        #if not(station.river in river_station):
-            #river_station = river_station.append(station.river)
-    #river_station = sorted(river_station)  
-    #return river_station
-
-#def stations_by_river(stations):
-    #rivers = {}
-    #for value in rivers_with_station(stations):
-        #station_1 = []
-        #for station in stations:
-            #station_1.append(station.name)
-        #rivers.update({value: station_1})
-    #return rivers
 
 def rivers_by_station_number(stations, N):
     rivers_name = []
