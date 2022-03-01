@@ -31,7 +31,17 @@ def stations_level_over_threshold(stations, tol):
     station_dict2 = dict(sorted(station_dict.items(), key = operator.itemgetter(1), reverse = True))
     
     for i in station_dict2.items():
-        if i[1] > tol and i[1] <660 :
+        if i[1] > tol :
             print(i)
         else:
             pass
+
+def stations_highest_rel_level(stations, N):
+    highest_rel = []
+    for station in stations:
+        if station.relative_water_level() == None:
+            pass
+        else:
+            highest_rel.append((station.name, station.relative_water_level()))
+    new = sorted_by_key(highest_rel, 1, reverse = True)
+    return new[0:N]
