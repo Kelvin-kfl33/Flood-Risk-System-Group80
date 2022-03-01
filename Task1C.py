@@ -10,8 +10,8 @@ def run():
     x = stations_within_radius(stations, centre, r)
     print(x)
     length = len(x)
-    return length 
-   
+    print(length)
+    print(stations)
 
 if __name__ == "__main__":
     print(" Task1C")
