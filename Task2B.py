@@ -15,10 +15,8 @@ def run():
     for element in stations:
         if element.latest_level != None and element.typical_range != None:
             fraction = ( element.latest_level - element.typical_range[0] ) / (element.typical_range[1] - element.typical_range[0])       
-            station.append
+            station_profile.append(element.name)
             fraction_list.append(fraction)
-
-
         else:
             pass
     ans = sorted(fraction_list)
