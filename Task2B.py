@@ -19,13 +19,14 @@ def run():
             fraction_list.append(fraction)
         else:
             pass
-    ans = sorted(fraction_list)
-    for i in ans:
-        if i > 0.8:
+    station_dict = dict(zip(station_profile, fraction_list))
+    station_dict2 = dict(sorted(station_dict.items(), key = lambda item: item[1]))
+    for i in station_dict2.items():
+        if i[1] > 0.8:
             print(i)
         else:
             pass
-        # if element.fraction >= 0.8:
-        #     target_list.append(element)
-
-run()
+        
+if __name__ == "__main__":
+    print(" Task2B")
+    run()
