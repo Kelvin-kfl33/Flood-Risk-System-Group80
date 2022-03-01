@@ -7,6 +7,9 @@ for manipulating/modifying station data
 """
 
 
+from sympy import fraction
+
+
 class MonitoringStation:
     """This class represents a river level monitoring station"""
 
@@ -26,7 +29,7 @@ class MonitoringStation:
         self.typical_range = typical_range
         self.river = river
         self.town = town
-
+    
         self.latest_level = None
 
     def __repr__(self):
@@ -51,7 +54,8 @@ class MonitoringStation:
 
     def relative_water_level(self):
         if self.latest_level != None and self.typical_range != None:
-            self.fraction = ( self.latest_level - self.typical_range[0] ) / (self.typical_range[1] - self.typical_range[0])
+            fraction = ( self.latest_level - self.typical_range[0] ) / (self.typical_range[1] - self.typical_range[0])
+            return fraction
         else:
             return None
 
