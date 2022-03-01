@@ -50,8 +50,8 @@ class MonitoringStation:
             return True
 
     def relative_water_level(self):
-        fraction = self.latest_level / self.typical_range
-        return fraction 
+        self.fraction = self.latest_level / self.typical_range
+        return self.fraction 
 
 
     
