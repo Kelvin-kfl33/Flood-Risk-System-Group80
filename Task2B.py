@@ -1,6 +1,6 @@
 from floodsystem.station import MonitoringStation
 from floodsystem.stationdata import build_station_list, update_water_levels
-
+import operator
 def run():
     stations = build_station_list()
     update_water_levels(stations)
@@ -20,13 +20,13 @@ def run():
         else:
             pass
     station_dict = dict(zip(station_profile, fraction_list))
-    station_dict2 = dict(sorted(station_dict.items(), key = lambda item: item[1]))
+    station_dict2 = dict(sorted(station_dict.items(), key = operator.itemgetter(1), reverse = True))
     for i in station_dict2.items():
-        if i[1] > 0.8:
+        if i[1] > 0.8 and i[1] <600 :
             print(i)
         else:
             pass
-        
+
 if __name__ == "__main__":
     print(" Task2B")
     run()
