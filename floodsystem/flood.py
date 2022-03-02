@@ -42,11 +42,6 @@ def stations_highest_rel_level(stations, N):
         if station.relative_water_level() == None:
             pass
         else:
-<<<<<<< HEAD
             highest_rel.append((station, station.relative_water_level()))
-    return (sorted_by_key(highest_rel, 1, False)) [:N]
-=======
-            highest_rel.append((station.name, station.relative_water_level()))
     new = sorted_by_key(highest_rel, 1, reverse = True)
     return new[0:N]
->>>>>>> c06bd6e436c9253515510ab8cfac80df991ab642
