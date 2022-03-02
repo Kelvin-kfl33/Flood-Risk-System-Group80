@@ -5,6 +5,9 @@ from floodsystem.stationdata import build_station_list
 from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.utils import sorted_by_key
 from floodsystem.stationdata import build_station_list, update_water_levels
+import numpy as np
+import matplotlib
+from floodsystem.analysis import polyfit
 
 def plot_water_levels(station, dates, levels):
     stations = build_station_list()
@@ -101,3 +104,19 @@ def plot_water_levels(station, dates, levels):
     plt.title('Water level over the past 10 days for the 5 stations with current greatest relative water level')
     plt.show()
 
+def plot_water_level_with_fit(station, dates, levels, p):
+    
+    
+    poly, offset = polyfit(dates, levels, p)
+
+    plt.plot(dates, np.polyval(poly, (matplotlib.dates.date2num(dates) - offset)), color='blue')
+    plt.plot(matplotlib.dates.date2num(dates),levels, color='black')
+    plt.axhline(y = station.get_typicalRange()[0], color = "green")
+    plt.axhline(y = station.get_typicalRange()[1], color = "red")
+    plt.xlabel("date")
+    plt.ylabel("water level")
+    plt.xticks(rotation=90)
+    plt.tight_layout()
+    plt.title(station.get_stationName())
+    plt.legend(["Polynomial fit", "Data levels", "Typical Low", "Typical High"])
+    plt.show()

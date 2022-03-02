@@ -1,0 +1,14 @@
+from floodsystem.datafetcher import fetch_latest_water_level_data, fetch_station_data
+from floodsystem.flood import stations_highest_rel_level
+from floodsystem.stationdata import build_station_list, update_water_levels
+from floodsystem.plot import plot_water_level_with_fit
+from floodsystem.analysis import polyfit
+
+def run():
+
+    stations = build_station_list()   
+    update_water_levels(stations)
+
+    top_5 = stations_highest_rel_level(stations, 5)
+    
+    
