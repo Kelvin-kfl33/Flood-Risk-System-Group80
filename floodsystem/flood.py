@@ -1,4 +1,3 @@
-
 from floodsystem.utils import sorted_by_key  # noqa
 from floodsystem.station import MonitoringStation
 from floodsystem.stationdata import build_station_list, update_water_levels
