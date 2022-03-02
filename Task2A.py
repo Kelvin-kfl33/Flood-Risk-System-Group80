@@ -21,6 +21,8 @@ def run():
         if station.name in names:
             print("Station name and current level: {}, {}".format(
                 station.name, station.latest_level))
+        else:
+            return None
 
     # Alternative implementation
     # for station in [s for s in stations if s.name in names]:
