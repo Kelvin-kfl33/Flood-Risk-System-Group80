@@ -37,14 +37,14 @@ def run():
     #     print("Station {} could not be found".format(station_name))
     #     return
 
-    # Fetch data over past 2 days
-    dt = 2
+    # Fetch data over past 5 days ( no data after Feb 25, 2022 yet )
+    dt = 5
     dates, levels = fetch_measure_levels(
         station_cam.measure_id, dt=datetime.timedelta(days=dt))
 
     # Print level history
     for date, level in zip(dates, levels):
-        print(date, level)
+            print(date, level)
 
 
 if __name__ == "__main__":
