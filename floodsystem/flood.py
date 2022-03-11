@@ -1,17 +1,3 @@
-from floodsystem.utils import sorted_by_key  # noqa
-from floodsystem.station import MonitoringStation
-from floodsystem.stationdata import build_station_list, update_water_levels
-import operator
-
-# def stations_highest_rel_level(stations, N):
-#     highest_rel = []
-#     for station in stations:
-#         if station.relative_water_level() == None:
-#             continue
-#         else:
-#             highest_rel.append((station, station.relative_water_level()))
-#     return (sorted_by_key(highest_rel, 1, False)) [:N]
-    
 from .utils import sorted_by_key  # noqa
 
 def stations_level_over_threshold(stations, tol=0.8):

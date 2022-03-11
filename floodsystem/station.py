@@ -1,15 +1,3 @@
-# Copyright (C) 2018 Garth N. Wells
-#
-# SPDX-License-Identifier: MIT
-"""This module provides a model for a monitoring station, and tools
-for manipulating/modifying station data
-
-"""
-
-
-#from sympy import fraction
-
-
 class MonitoringStation:
     """This class represents a river level monitoring station"""
 
@@ -29,7 +17,7 @@ class MonitoringStation:
         self.typical_range = typical_range
         self.river = river
         self.town = town
-    
+
         self.latest_level = None
 
     def __repr__(self):
@@ -43,37 +31,38 @@ class MonitoringStation:
         return d
 
     def typical_range_consistent(self):
-        """Return a True or False, depending on whether the typical range is consistent or not"""
-        typical_range = self.typical_range
-        if typical_range == None:
+        """This method looks at the typical range value for each monitoring station and if
+        it is None (i.e no data) or the low range is greater than the high range we return
+        a boolean value to mark/demonstrate that it contains inconsistent data. Therefore
+        we do not want to include it in our data."""
+        #Test first for no data available
+        if self.typical_range == None:
             return False
-        elif typical_range[1] < typical_range[0]:
+        #Test if first tuple value is larger than the second tuple value
+        elif self.typical_range[0] > self.typical_range[1]:
             return False
+        #If both these tests are passed we can mark the monitoring station as containing consistent data
         else:
             return True
 
     def relative_water_level(self):
-        if self.latest_level != None and self.typical_range != None:
-            fraction = ( self.latest_level - self.typical_range[0] ) / (self.typical_range[1] - self.typical_range[0])
-            return fraction
-        else:
+        """This method looks at the lastest update for river level and returns it as a fraction of the typical range."""
+        if self.typical_range_consistent() == False:
             return None
+        elif self.latest_level == None:
+            return None
+        else:
+            relative_level = (self.latest_level - self.typical_range[0])/(self.typical_range[1]-self.typical_range[0])
+            return (relative_level)
+            
 
-        
-
-
-    
-    
 
 def inconsistent_typical_range_stations(stations):
-    """Give a list of inconsistent stations"""
+    """This function calls the typical range data method and if the monitoring station is marked
+    to be inconsistent it is appended to a list of stations (MonitoringStation) which have
+    inconsistent range data. This list is returned without being sorted"""
     inconsistent_stations = []
     for station in stations:
-        if MonitoringStation.typical_range_consistent(station) == False:
-            inconsistent_stations.append(station.name)
-        else:
-            continue
-    inconsistent_stations = sorted(inconsistent_stations)
-    assert inconsistent_stations != None 
-    assert inconsistent_stations != []
+        if station.typical_range_consistent() == False:
+            inconsistent_stations.append(station)
     return inconsistent_stations
